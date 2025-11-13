@@ -62,6 +62,12 @@ user_schema.pre("save", function (next) {
     next();
 })
 
+user_schema.methods.toJSON = function () {
+    const user = this.toObject();
+    delete user.password;
+    return user;
+}
+
 const UserModel = mongoose.model("User", user_schema);
 
 export default UserModel;
