@@ -9,13 +9,13 @@ export interface User {
     password: string;
     role: string;
     profile_picture: string;
-    is_avtive: boolean;
+    is_active: boolean;
     activation_code: string;
 }
 
 const Schema = mongoose.Schema;
 
-const user_schema = new Schema<User>({
+const UserSchema = new Schema<User>({
     full_name: {
         type: Schema.Types.String,
         required: true,
@@ -45,7 +45,7 @@ const user_schema = new Schema<User>({
         type: Schema.Types.String,
         default: "userpp.jpg",
     },
-    is_avtive: {
+    is_active: {
         type: Schema.Types.Boolean,
         default: false,
     },
@@ -53,21 +53,24 @@ const user_schema = new Schema<User>({
         type: Schema.Types.String,
     }
 }, {
-    timestamps: true,
+    timestamps: {
+        createdAt: "created_at",
+        updatedAt: "updated_at"
+    },
 });
 
-user_schema.pre("save", function (next) {
+UserSchema.pre("save", function (next) {
     const user = this;
     user.password = encrypt(user.password);
     next();
 })
 
-user_schema.methods.toJSON = function () {
+UserSchema.methods.toJSON = function () {
     const user = this.toObject();
     delete user.password;
     return user;
 }
 
-const UserModel = mongoose.model("User", user_schema);
+const UserModel = mongoose.model("User", UserSchema);
 
 export default UserModel;
