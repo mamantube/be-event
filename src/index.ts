@@ -19,6 +19,12 @@ async function init() {
         app.use(express.urlencoded({ extended: true }))
         
         const PORT = 3001;
+
+        app.get("/", (req, res) => {
+            res.status(200).json({
+                message: "Server is running"
+            })
+        })
         
         app.use("/api", router)
         
