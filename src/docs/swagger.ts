@@ -29,6 +29,13 @@ const doc = {
                 identifier: "firman007",
                 password: "firman007id",
             },
+            RegisterRequest: {
+                full_name: "Mike Bryan",
+                user_name: "bryan",
+                email: "bryan2025@mail.com",
+                password: "Abc123",
+                confirmPassword: "Abc123",
+            }
         }
     }
 }
