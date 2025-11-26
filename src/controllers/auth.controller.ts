@@ -94,6 +94,7 @@ export default {
                         user_name: identifier,
                     }
                 ],
+                is_active: true,
             });
             
             if (!userByIdentifier) {
@@ -145,14 +146,6 @@ export default {
         }
     },
     async activation(req: Request, res: Response) {
-        /**
-            #swagger.tags = ['Auth']
-            #swagger.requestBody = {
-                required: true,
-                schema: {$ref: '#/components/schemas/ActivationRequest'}
-            }
-         */
-        
         try {          
             const { code } = req.body as { code: string };
     
