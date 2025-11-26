@@ -23,6 +23,21 @@
           "default": {
             "description": ""
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          }
         }
       }
     },
@@ -33,11 +48,36 @@
           "default": {
             "description": ""
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
         }
       }
     },
     "/auth/me": {
       "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/activatin": {
+      "post": {
         "description": "",
         "responses": {
           "default": {
@@ -66,6 +106,37 @@
             "type": "string",
             "example": "firman007id"
           }
+        },
+        "xml": {
+          "name": "LoginRequest"
+        }
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "example": "Mike Bryan"
+          },
+          "user_name": {
+            "type": "string",
+            "example": "bryan"
+          },
+          "email": {
+            "type": "string",
+            "example": "bryan2025@mail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "Abc123"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": "Abc123"
+          }
+        },
+        "xml": {
+          "name": "RegisterRequest"
         }
       }
     }
