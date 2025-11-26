@@ -26,6 +26,7 @@ const UserSchema = new Schema<User>({
     user_name: {
         type: Schema.Types.String,
         required: true,
+        unique: true,
     },
     phone_number: {
         type: Schema.Types.String,
@@ -34,6 +35,7 @@ const UserSchema = new Schema<User>({
     email: {
         type: Schema.Types.String,
         required: true,
+        unique: true,
     },
     password: {
         type: Schema.Types.String,
@@ -65,6 +67,7 @@ const UserSchema = new Schema<User>({
 UserSchema.pre("save", function (next) {
     const user = this;
     user.password = encrypt(user.password);
+    user.activation_code = encrypt(user.id)
     next();
 });
 
