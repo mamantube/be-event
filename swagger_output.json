@@ -18,6 +18,9 @@
   "paths": {
     "/auth/register": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -43,6 +46,9 @@
     },
     "/auth/login": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -78,10 +84,28 @@
     },
     "/auth/activatin": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "default": {
             "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            }
           }
         }
       }
@@ -126,17 +150,33 @@
             "type": "string",
             "example": "bryan2025@mail.com"
           },
+          "phone_number": {
+            "type": "string",
+            "example": "08637798938"
+          },
           "password": {
             "type": "string",
             "example": "Abc123"
           },
-          "confirmPassword": {
+          "confirm_password": {
             "type": "string",
             "example": "Abc123"
           }
         },
         "xml": {
           "name": "RegisterRequest"
+        }
+      },
+      "ActivationRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "abcd"
+          }
+        },
+        "xml": {
+          "name": "ActivationRequest"
         }
       }
     }
