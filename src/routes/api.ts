@@ -22,5 +22,6 @@ router.post("/auth/login",
      */
          authController.login);
 router.get("/auth/me", authMiddleware, authController.me);
+router.post("/auth/activatin", authController.activation);
 
 export default router;
