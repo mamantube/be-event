@@ -3,7 +3,7 @@ import { User } from "../models/user.model";
 import jwt from "jsonwebtoken";
 import { ENCRYPT_PASSWORD } from "./env";
 
-export interface IUserToken extends Omit<User, "password" | "activation_code" | "is_active" | "email" | "full_name" | "profile_picture" | "user_name" | "phone_number"> {
+export interface IUserToken extends Omit<User, "password" | "activation_code" | "is_active" | "email" | "full_name" | "profile_picture" | "user_name" | "phone_number" | "created_at"> {
     id?: Types.ObjectId;
 }
 
