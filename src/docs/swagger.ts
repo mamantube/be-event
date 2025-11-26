@@ -33,8 +33,12 @@ const doc = {
                 full_name: "Mike Bryan",
                 user_name: "bryan",
                 email: "bryan2025@mail.com",
+                phone_number: "08637798938",
                 password: "Abc123",
-                confirmPassword: "Abc123",
+                confirm_password: "Abc123",
+            },
+            ActivationRequest: {
+                code: "abcd"
             }
         }
     }
