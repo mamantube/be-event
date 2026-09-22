@@ -1,40 +1,32 @@
 {
-  "name": "back-end",
+  "name": "back-end-event",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts",
-    "docs": "ts-node-dev src/docs/swagger.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamantube/be-event.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mamantube/be-event/issues"
+  },
+  "homepage": "https://github.com/mamantube/be-event#readme",
   "dependencies": {
-    "@types/body-parser": "^1.19.6",
-    "@types/cors": "2.8.19",
-    "@types/dotenv": "^6.1.1",
-    "@types/ejs": "^3.1.5",
-    "@types/express": "^5.0.5",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/nodemailer": "^7.0.4",
-    "@types/swagger-ui-express": "4.1.8",
-    "body-parser": "^2.2.0",
-    "cors": "2.8.5",
-    "dotenv": "^17.2.3",
-    "ejs": "^3.1.10",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.19.3",
-    "nodemailer": "^7.0.10",
-    "nodemon": "3.1.11",
-    "swagger-autogen": "2.23.7",
-    "swagger-ui-express": "5.0.1",
-    "ts-node": "10.9.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.9.3",
-    "yup": "^1.7.1"
+    "typescript": "5.7.3"
   }
 }
