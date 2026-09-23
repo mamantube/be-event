@@ -1,0 +1,67 @@
+import mongoose from "mongoose";
+
+export interface User {
+    full_name: string;
+    user_name: string;
+    email: string;
+    phone_number: string;
+    password: string;
+    role: string;
+    profile_picture: string;
+    is_active: boolean;
+    activation_code: string
+}
+
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema<User>({
+    full_name: {
+        type: Schema.Types.String,
+        required: true,
+    },
+    user_name: {
+        type: Schema.Types.String,
+        required: true,
+    },
+    email: {
+        type: Schema.Types.String,
+        required: true,
+    },
+    phone_number: {
+        type: Schema.Types.String,
+        required: true,
+    },
+    password: {
+        type: Schema.Types.String,
+        required: true,
+    },
+    role: {
+        type: Schema.Types.String,
+        enum: ["admin", "user"],
+        default: "user",
+    },
+    profile_picture: {
+        type: Schema.Types.String,
+        default: "user.jpg",
+    },
+    is_active: {
+        type: Schema.Types.Boolean,
+        default: false,
+    },
+    activation_code: {
+        type: Schema.Types.String,
+
+    },
+    
+
+}, {
+    timestamps: {
+        createdAt: "created_at",
+        updatedAt: "updated_at"
+    },
+})
+
+const UserModel = mongoose.model("User", UserSchema);
+
+export default UserModel;
+
