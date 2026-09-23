@@ -13,6 +13,12 @@ async function init() {
     const app = express();
     const PORT = 3000;
 
+    app.get("/", (req, res) => {
+      res.status(200).json({
+        message: "Server is running"
+      })
+    })
+
     app.use(bodyParser.json());
     app.use("/api/v1", router);
 
