@@ -7,6 +7,29 @@ const app = express();
 
 app.use(bodyParser.json());
 
+let databaseConnected = false;
+
+app.use(async (req, res, next) => {
+  try {
+    if (!databaseConnected) {
+      const result = await db();
+
+      console.log("Database status:", result);
+
+      databaseConnected = true;
+    }
+
+    next();
+  } catch (error) {
+    console.error("Database connection error:", error);
+
+    res.status(500).json({
+      message: "Database connection failed",
+      data: null,
+    });
+  }
+});
+
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Server is running",
@@ -16,24 +39,14 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1", router);
 
-// Untuk Vercel
 export default app;
 
-// Untuk menjalankan server secara lokal
 if (process.env.NODE_ENV !== "production") {
   const PORT = 3000;
 
-  db()
-    .then((result) => {
-      console.log("Database status:", result);
-
-      app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
-      });
-    })
-    .catch((error) => {
-      console.error("Database connection error:", error);
-    });
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
 }
 
 // import express from "express";
